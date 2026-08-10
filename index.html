@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Green Republic Summer Mix 100kg — 面向海地批发商与进口商的夏季二手衣产品介绍与询盘页面。" />
+  <title>Green Republic · Summer Mix 100kg | Haiti Market</title>
+  <style>
+    :root {
+      --ink: #142431;
+      --ink-soft: #42545d;
+      --muted: #718088;
+      --paper: #fbfaf6;
+      --card: #ffffff;
+      --line: #dfe6e1;
+      --mint: #9ed9c8;
+      --mint-deep: #2b8f7a;
+      --coral: #ef705d;
+      --yellow: #f4cc67;
+      --navy: #17364a;
+      --shadow: 0 18px 50px rgba(20, 36, 49, .10);
+      --radius: 24px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 90% -10%, rgba(158, 217, 200, .35), transparent 28rem),
+        linear-gradient(180deg, #f8f8f2 0%, var(--paper) 28%, #f4f7f2 100%);
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      line-height: 1.55;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button, input, select { font: inherit; }
+    button { cursor: pointer; }
+    .wrap { width: min(1160px, calc(100% - 40px)); margin: 0 auto; }
+
+    .topbar {
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(251, 250, 246, .86);
+      border-bottom: 1px solid rgba(223, 230, 225, .86);
+      backdrop-filter: blur(18px);
+    }
+    .nav {
+      min-height: 74px; display: flex; align-items: center; justify-content: space-between; gap: 20px;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; letter-spacing: -.02em; }
+    .brand-mark {
+      width: 48px; height: 48px; display: grid; place-items: center; overflow: hidden; border-radius: 13px;
+      background: white; box-shadow: 5px 5px 0 var(--yellow);
+    }
+    .brand-mark img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .brand small { display: block; color: var(--muted); font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+    .nav-links { display: flex; align-items: center; gap: 24px; color: var(--ink-soft); font-size: 14px; }
+    .nav-links a:hover { color: var(--coral); }
+    .lang-switch { display: flex; gap: 4px; padding: 4px; border: 1px solid var(--line); border-radius: 999px; background: #fff; }
+    .lang-switch button { border: 0; border-radius: 999px; padding: 6px 9px; color: var(--muted); background: transparent; font-size: 11px; font-weight: 800; }
+    .lang-switch button.active { background: var(--ink); color: white; }
+
+    .hero { padding: 76px 0 64px; }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.03fr) minmax(390px, .97fr); gap: 70px; align-items: center; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; color: var(--mint-deep); font-size: 12px; font-weight: 850; letter-spacing: .13em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 28px; height: 2px; background: var(--coral); }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { max-width: 650px; margin: 18px 0 20px; font-size: clamp(46px, 7vw, 82px); line-height: .96; letter-spacing: -.07em; }
+    h1 span { color: var(--coral); }
+    .hero-copy { max-width: 580px; color: var(--ink-soft); font-size: 18px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .btn { display: inline-flex; justify-content: center; align-items: center; gap: 9px; min-height: 48px; padding: 0 18px; border: 1px solid transparent; border-radius: 999px; font-size: 14px; font-weight: 800; transition: transform .2s ease, box-shadow .2s ease, background .2s ease; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { color: white; background: var(--coral); box-shadow: 0 10px 22px rgba(239,112,93,.25); }
+    .btn-secondary { color: var(--ink); background: white; border-color: var(--line); }
+    .btn-dark { color: white; background: var(--ink); }
+    .hero-note { display: flex; gap: 10px; align-items: flex-start; margin-top: 25px; color: var(--muted); font-size: 12px; }
+    .hero-note strong { color: var(--ink-soft); }
+
+    .visual-wrap { position: relative; min-height: 470px; }
+    .visual-wrap::before { content: "SUMMER / MIX / 100"; position: absolute; top: 4px; right: -12px; color: rgba(20, 36, 49, .16); font-size: 11px; font-weight: 900; letter-spacing: .22em; writing-mode: vertical-rl; }
+    .visual { position: absolute; inset: 0 20px 10px 0; overflow: hidden; border-radius: 34px; background: #e0f0e9; box-shadow: var(--shadow); }
+    .visual-photo { background: #17364a; }
+    .hero-photo { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 67% center; filter: saturate(.92); }
+    .visual-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,36,49,.02) 35%, rgba(20,36,49,.72) 100%); pointer-events: none; }
+    .photo-stamp { position: absolute; z-index: 2; top: 24px; left: 24px; display: grid; width: 92px; height: 92px; place-items: center; border: 2px solid rgba(255,255,255,.78); border-radius: 50%; color: white; background: rgba(20,36,49,.22); text-align: center; font-size: 10px; font-weight: 900; letter-spacing: .08em; line-height: 1.15; }
+    .photo-caption { position: absolute; z-index: 2; right: 24px; bottom: 24px; left: 24px; color: white; }
+    .photo-caption b { display: block; font-size: clamp(27px, 4vw, 44px); line-height: .95; letter-spacing: -.06em; }
+    .photo-caption span { display: block; margin-top: 9px; color: #d8e9df; font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    .visual::before { content: ""; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255,255,255,.48), transparent 45%); }
+    .sun { position: absolute; width: 90px; height: 90px; top: 45px; right: 48px; border-radius: 50%; background: var(--yellow); opacity: .9; }
+    .paper-shape { position: absolute; width: 360px; height: 360px; right: -64px; bottom: -100px; border-radius: 50%; background: rgba(255,255,255,.30); }
+    .sticker { position: absolute; top: 29px; left: 28px; padding: 10px 13px; border-radius: 12px; color: var(--ink); background: white; font-size: 11px; font-weight: 900; letter-spacing: .09em; transform: rotate(-4deg); box-shadow: 6px 6px 0 rgba(239,112,93,.38); }
+    .box { position: absolute; left: 50%; top: 55%; width: 260px; height: 176px; transform: translate(-50%, -50%) rotate(-4deg); }
+    .box-top { position: absolute; inset: 0 0 auto; height: 56px; background: #e8b969; clip-path: polygon(0 48%, 72% 0, 100% 35%, 28% 100%); }
+    .box-front { position: absolute; left: 24px; top: 48px; width: 185px; height: 128px; border-radius: 4px 4px 15px 15px; background: linear-gradient(135deg, #d99e52, #bc7844); transform: skewY(3deg); }
+    .box-side { position: absolute; top: 52px; right: 8px; width: 66px; height: 123px; background: #a9653d; clip-path: polygon(0 0, 100% 12%, 100% 100%, 0 100%); }
+    .box-label { position: absolute; left: 63px; top: 86px; width: 96px; padding: 13px 9px; transform: rotate(-1deg); color: var(--ink); background: #fff1d0; text-align: center; font-size: 11px; font-weight: 900; line-height: 1.2; letter-spacing: .08em; box-shadow: 4px 4px 0 rgba(20,36,49,.13); }
+    .shirt { position: absolute; width: 84px; height: 70px; border-radius: 7px 7px 18px 18px; opacity: .96; box-shadow: inset -8px -8px 0 rgba(20,36,49,.10); }
+    .shirt::before, .shirt::after { content: ""; position: absolute; top: 8px; width: 35px; height: 24px; background: inherit; }
+    .shirt::before { left: -23px; transform: rotate(30deg); border-radius: 8px 5px 5px 4px; }
+    .shirt::after { right: -23px; transform: rotate(-30deg); border-radius: 5px 8px 4px 5px; }
+    .shirt-1 { left: 51px; top: 109px; z-index: 4; background: #ef705d; transform: rotate(-17deg); }
+    .shirt-2 { left: 141px; top: 105px; z-index: 3; background: #4e94a0; transform: rotate(14deg) scale(.9); }
+    .shirt-3 { left: 90px; top: 55px; z-index: 2; background: #f3d171; transform: rotate(5deg) scale(.82); }
+    .thread { position: absolute; width: 240px; height: 2px; right: -38px; bottom: 78px; background: var(--coral); transform: rotate(-22deg); opacity: .8; }
+    .thread::after { content: ""; position: absolute; right: 0; top: -5px; width: 12px; height: 12px; border-radius: 50%; background: var(--coral); }
+
+    .stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 20px; }
+    .stat { padding: 18px 16px; border-top: 2px solid var(--ink); }
+    .stat b { display: block; font-size: 25px; letter-spacing: -.04em; }
+    .stat span { color: var(--muted); font-size: 12px; }
+
+    section { padding: 74px 0; }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 25px; margin-bottom: 28px; }
+    .section-head h2 { max-width: 660px; margin: 10px 0 0; font-size: clamp(30px, 4vw, 50px); line-height: 1.02; letter-spacing: -.055em; }
+    .section-head p { max-width: 410px; margin-bottom: 2px; color: var(--ink-soft); font-size: 14px; }
+    .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .feature { min-height: 215px; padding: 24px; border: 1px solid var(--line); border-radius: var(--radius); background: rgba(255,255,255,.65); }
+    .feature:nth-child(2) { background: #fff2d2; border-color: #f0d89b; }
+    .feature:nth-child(3) { background: #e6f3ee; border-color: #c4e2d7; }
+    .feature-icon { display: grid; width: 43px; height: 43px; place-items: center; margin-bottom: 30px; border-radius: 50%; color: white; background: var(--ink); font-size: 19px; }
+    .feature h3 { margin-bottom: 8px; font-size: 19px; letter-spacing: -.03em; }
+    .feature p { margin-bottom: 0; color: var(--ink-soft); font-size: 14px; }
+
+    .story-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 16px; }
+    .story-card { position: relative; min-height: 300px; overflow: hidden; border-radius: var(--radius); background: #dfe9e3; }
+    .story-card.wide { min-height: 410px; }
+    .story-card img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .45s ease; }
+    .story-card:hover img { transform: scale(1.035); }
+    .story-card::after { content: ""; position: absolute; inset: 35% 0 0; background: linear-gradient(180deg, transparent, rgba(20,36,49,.82)); pointer-events: none; }
+    .story-label { position: absolute; z-index: 2; right: 19px; bottom: 17px; left: 19px; color: white; }
+    .story-label b { display: block; margin-bottom: 4px; font-size: 17px; letter-spacing: -.02em; }
+    .story-label span { color: #dcebe4; font-size: 12px; }
+    .story-side { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    .assortment-grid { display: grid; grid-template-columns: 1fr .8fr; gap: 26px; align-items: stretch; }
+    .panel { padding: 27px; border: 1px solid var(--line); border-radius: var(--radius); background: rgba(255,255,255,.76); box-shadow: 0 8px 24px rgba(20,36,49,.04); }
+    .panel h3 { margin-bottom: 5px; font-size: 20px; letter-spacing: -.035em; }
+    .panel-note { margin-bottom: 20px; color: var(--muted); font-size: 12px; }
+    .mix-row { margin: 18px 0; }
+    .mix-meta { display: flex; justify-content: space-between; gap: 15px; margin-bottom: 7px; font-size: 13px; font-weight: 750; }
+    .mix-meta span:last-child { color: var(--mint-deep); }
+    .bar { height: 10px; overflow: hidden; border-radius: 99px; background: #e9efeb; }
+    .bar i { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--mint-deep), var(--mint)); transition: width .35s ease; }
+    .mix-row:nth-child(4) .bar i { background: linear-gradient(90deg, #ef705d, #f4b077); }
+    .mix-row:nth-child(5) .bar i { background: linear-gradient(90deg, #3d7085, #79b6bf); }
+    .mix-row:nth-child(6) .bar i { background: linear-gradient(90deg, #c69735, #f4cc67); }
+    .mix-row:nth-child(7) .bar i { background: linear-gradient(90deg, #806ca8, #c4a9dc); }
+    .quality-list { display: grid; gap: 14px; margin: 20px 0 0; padding: 0; list-style: none; }
+    .quality-list li { display: flex; gap: 11px; align-items: flex-start; color: var(--ink-soft); font-size: 14px; }
+    .quality-list li::before { content: "✓"; display: grid; flex: 0 0 21px; width: 21px; height: 21px; place-items: center; border-radius: 50%; color: white; background: var(--mint-deep); font-size: 12px; font-weight: 900; }
+
+    .quote-section { color: white; background: var(--navy); }
+    .quote-section .eyebrow { color: var(--mint); }
+    .quote-section .section-head p, .quote-section .panel-note { color: #b3c8cd; }
+    .quote-grid { display: grid; grid-template-columns: 1fr .85fr; gap: 24px; align-items: start; }
+    .quote-section .panel { color: var(--ink); background: #f9faf5; border: 0; box-shadow: none; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .field { display: grid; gap: 7px; }
+    .field.full { grid-column: 1 / -1; }
+    label { color: var(--ink-soft); font-size: 12px; font-weight: 800; }
+    input, select { width: 100%; min-height: 43px; padding: 0 12px; border: 1px solid var(--line); border-radius: 11px; outline: 0; color: var(--ink); background: white; }
+    input:focus, select:focus { border-color: var(--mint-deep); box-shadow: 0 0 0 3px rgba(43,143,122,.13); }
+    input[type="range"] { min-height: auto; padding: 0; accent-color: var(--coral); }
+    .range-meta { display: flex; justify-content: space-between; color: var(--muted); font-size: 12px; }
+    .quote-result { padding: 25px; border: 1px solid rgba(158,217,200,.24); border-radius: var(--radius); background: rgba(255,255,255,.07); }
+    .quote-result h3 { margin-bottom: 20px; font-size: 20px; }
+    .result-line { display: flex; justify-content: space-between; gap: 15px; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,.14); color: #bdd0d4; font-size: 13px; }
+    .result-line strong { color: white; font-size: 17px; }
+    .result-line:last-of-type { border-bottom: 0; }
+    .quote-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+    .quote-actions .btn-secondary { background: white; }
+    .tiny { margin-top: 15px; color: #9fb8bd; font-size: 11px; }
+
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; counter-reset: step; }
+    .step { position: relative; padding: 22px 20px 20px; border-radius: 20px; background: #fff; border: 1px solid var(--line); }
+    .step::before { counter-increment: step; content: "0" counter(step); display: block; margin-bottom: 28px; color: var(--coral); font-size: 29px; font-weight: 900; letter-spacing: -.08em; }
+    .step h3 { margin-bottom: 7px; font-size: 17px; }
+    .step p { margin-bottom: 0; color: var(--muted); font-size: 13px; }
+
+    .contact { display: grid; grid-template-columns: 1.1fr .9fr; gap: 30px; align-items: center; padding: 35px; border-radius: 30px; background: var(--coral); color: white; }
+    .contact h2 { max-width: 600px; margin-bottom: 12px; font-size: clamp(30px, 4vw, 52px); line-height: 1.02; letter-spacing: -.055em; }
+    .contact p { max-width: 510px; margin-bottom: 0; color: #fff0e7; }
+    .contact-card { padding: 21px; border-radius: 20px; background: rgba(20,36,49,.16); }
+    .contact-line { display: flex; justify-content: space-between; gap: 15px; padding: 11px 0; border-bottom: 1px solid rgba(255,255,255,.2); font-size: 13px; }
+    .contact-line:last-child { border-bottom: 0; }
+    .contact-card .btn { width: 100%; margin-top: 14px; }
+    .contact-line span { color: #ffd9ce; }
+    footer { padding: 28px 0 40px; color: var(--muted); font-size: 12px; }
+    footer .footer-inner { display: flex; justify-content: space-between; gap: 20px; }
+
+    .edit-box { margin: 0 0 40px; border: 1px dashed #b8cbc2; border-radius: 18px; background: rgba(230,243,238,.65); }
+    .edit-box summary { padding: 16px 18px; color: var(--mint-deep); font-size: 13px; font-weight: 850; cursor: pointer; }
+    .edit-content { padding: 0 18px 18px; }
+    .edit-content .form-grid { max-width: 780px; }
+    .edit-hint { margin: 0 0 15px; color: var(--muted); font-size: 12px; }
+    .toast { position: fixed; right: 22px; bottom: 22px; z-index: 50; padding: 12px 16px; border-radius: 12px; color: white; background: var(--ink); box-shadow: var(--shadow); font-size: 13px; transform: translateY(20px); opacity: 0; pointer-events: none; transition: .25s ease; }
+    .toast.show { transform: translateY(0); opacity: 1; }
+    .print-only { display: none; }
+
+    @media (max-width: 820px) {
+      .wrap { width: min(100% - 28px, 620px); }
+      .nav-links { display: none; }
+      .hero { padding-top: 52px; }
+      .hero-grid, .assortment-grid, .quote-grid, .contact { grid-template-columns: 1fr; gap: 28px; }
+      .story-grid { grid-template-columns: 1fr; }
+      .visual-wrap { min-height: 390px; }
+      .stat-row { grid-template-columns: repeat(2, 1fr); }
+      .features, .steps { grid-template-columns: 1fr 1fr; }
+      .contact { padding: 26px; }
+    }
+    @media (max-width: 500px) {
+      .wrap { width: calc(100% - 24px); }
+      .brand small { display: none; }
+      .lang-switch button { padding: 6px 7px; }
+      h1 { font-size: 54px; }
+      .visual { right: 0; }
+      .features, .steps, .form-grid { grid-template-columns: 1fr; }
+      .story-side { grid-template-columns: 1fr; }
+      .field.full { grid-column: auto; }
+      .section-head { display: block; }
+      .section-head p { margin-top: 14px; }
+      footer .footer-inner { display: block; }
+    }
+    @media print {
+      .topbar, .hero-actions, .edit-box, .quote-section, .toast { display: none !important; }
+      body { background: white; }
+      .hero { padding-top: 20px; }
+      section { padding: 25px 0; break-inside: avoid; }
+      .print-only { display: block; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap nav">
+      <a class="brand" href="#top" aria-label="Green Republic Summer Mix">
+        <span class="brand-mark"><img src="assets/green-republic/logo-gold.jpg" alt="Green Republic logo" /></span>
+        <span><span id="brandName">Green Republic</span><small>Summer Mix · Haiti Market</small></span>
+      </a>
+      <nav class="nav-links" aria-label="页面导航">
+        <a href="#product" data-i18n="navProduct">产品</a>
+        <a href="#mix" data-i18n="navMix">配比</a>
+        <a href="#quote" data-i18n="navQuote">询盘</a>
+        <a href="#contact" data-i18n="navContact">联系</a>
+      </nav>
+      <div class="lang-switch" aria-label="Language switcher">
+        <button class="active" data-lang="en">EN</button>
+        <button data-lang="ht">Kreyòl</button>
+        <button data-lang="zh">中</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow" data-i18n="eyebrow">Seasonal selection · Wholesale bale</div>
+          <h1><span>Summer</span><br />Mix<br /><em>100kg</em></h1>
+          <p class="hero-copy" data-i18n="heroCopy">A summer second-hand clothing mix prepared for the Haiti market — light, resellable and easy for wholesalers, retailers and community markets to replenish.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#quote" data-i18n="ctaQuote">配置我的询盘 →</a>
+            <button class="btn btn-secondary" id="printBtn" data-i18n="ctaPrint">打印 / 保存 PDF</button>
+          </div>
+          <p class="hero-note"><span>✦</span><span><strong data-i18n="draftNoteTitle">Product information</strong> · <span data-i18n="draftNote">Confirmed company, packing, mix, price and contact details are shown below.</span></span></p>
+        </div>
+        <div class="visual-wrap" aria-label="Summer Mix 100kg product illustration">
+          <div class="visual visual-photo">
+            <img class="hero-photo" src="assets/green-republic/export.jpg" alt="Green Republic bulk export warehouse with compressed clothing bales" />
+            <div class="photo-stamp">GREEN<br />REPUBLIC</div>
+            <div class="photo-caption"><b>SUMMER MIX</b><span>100kg / bale · 264 bales / 40ft container</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="wrap stat-row" aria-label="product facts">
+        <div class="stat"><b>100kg</b><span data-i18n="statPack">Compressed bale</span></div>
+        <div class="stat"><b>264</b><span data-i18n="statPieces">Bales / 40ft container</span></div>
+        <div class="stat"><b>$125</b><span data-i18n="statCategories">Price / bale</span></div>
+        <div class="stat"><b>40ft</b><span data-i18n="statMarket">Minimum order</span></div>
+      </div>
+    </section>
+
+    <section id="product">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="eyebrow" data-i18n="sectionEyebrow">产品定位</div><h2 data-i18n="productTitle">为热带夏季准备的<br />灵活混装。</h2></div>
+          <p data-i18n="productIntro">把常见夏季单品组合在一个 100kg 批次里，方便客户按自己的渠道拆包、分拣和销售。</p>
+        </div>
+        <div class="features">
+          <article class="feature"><div class="feature-icon">☀</div><h3 data-i18n="feature1Title">夏季友好</h3><p data-i18n="feature1Text">以短袖、轻薄上衣、短裤和连衣裙等夏季品类为核心，适合温暖气候销售。</p></article>
+          <article class="feature"><div class="feature-icon">↗</div><h3 data-i18n="feature2Title">适合批发分销</h3><p data-i18n="feature2Text">100kg 作为清晰的采购单位，便于报价、拼柜、补货和按渠道拆分。</p></article>
+          <article class="feature"><div class="feature-icon">♻</div><h3 data-i18n="feature3Title">让衣物继续流通</h3><p data-i18n="feature3Text">二手衣重新进入当地市场，为社区零售和价格敏感型消费者提供选择。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="visual-story">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="eyebrow" data-i18n="storyEyebrow">Product visual story</div><h2 data-i18n="storyTitle">See the bale,<br />the mix and the route to market.</h2></div>
+          <p data-i18n="storyIntro">Reference visuals supplied by Green Republic. The current commercial specification remains 100kg per compressed bale, 264 bales per 40ft container.</p>
+        </div>
+        <div class="story-grid">
+          <article class="story-card wide"><img src="assets/green-republic/main-bale.jpg" loading="lazy" alt="Green Republic compressed clothing bale reference" /><div class="story-label"><b data-i18n="story1Title">Compressed bale reference</b><span data-i18n="story1Text">Reference visual; current commercial offer: 100kg/bale</span></div></article>
+          <div class="story-side">
+            <article class="story-card"><img src="assets/green-republic/packaging.jpg" loading="lazy" alt="Compressed clothing bale packaging" /><div class="story-label"><b data-i18n="story2Title">Export packaging</b><span data-i18n="story2Text">Compressed bale presentation</span></div></article>
+            <article class="story-card"><img src="assets/green-republic/category-mix.jpg" loading="lazy" alt="Ladies mens and children clothing category mix" /><div class="story-label"><b data-i18n="story3Title">Category mix</b><span data-i18n="story3Text">Ladies · Men's · Children</span></div></article>
+            <article class="story-card"><img src="assets/green-republic/quality-control.jpg" loading="lazy" alt="Clothing quality control and packing workflow" /><div class="story-label"><b data-i18n="story4Title">Quality control</b><span data-i18n="story4Text">Inspection and packing workflow</span></div></article>
+            <article class="story-card"><img src="assets/green-republic/market.jpg" loading="lazy" alt="Warm climate clothing market" /><div class="story-label"><b data-i18n="story5Title">Market fit</b><span data-i18n="story5Text">Warm-climate resale visual</span></div></article>
+          </div>
+        </div>
+        <article class="story-card wide" style="margin-top:16px;"><img src="assets/green-republic/export.jpg" loading="lazy" alt="Green Republic bulk export warehouse" /><div class="story-label"><b data-i18n="story6Title">Bulk export readiness</b><span data-i18n="story6Text">264 bales per 40ft container · Taiwan export visual</span></div></article>
+      </div>
+    </section>
+
+    <section id="mix">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="eyebrow" data-i18n="mixEyebrow">示例配置</div><h2 data-i18n="mixTitle">一包之内，<br />看得懂的商品结构。</h2></div>
+          <p data-i18n="mixIntro">以下比例是演示值。打开“编辑产品资料”即可替换成你的真实配比，页面会即时更新。</p>
+        </div>
+        <div class="assortment-grid">
+          <div class="panel">
+            <h3 data-i18n="assortmentTitle">Summer Mix category ratio</h3>
+            <p class="panel-note" data-i18n="assortmentNote">Confirmed assortment · 100kg compressed bale</p>
+            <div class="mix-row"><div class="mix-meta"><span data-i18n="mixLadiesLabel">Ladies</span><span id="ladiesPct">50%</span></div><div class="bar"><i id="ladiesBar" style="width:50%"></i></div></div>
+            <div class="mix-row"><div class="mix-meta"><span data-i18n="mixMensLabel">Men's</span><span id="mensPct">30%</span></div><div class="bar"><i id="mensBar" style="width:30%"></i></div></div>
+            <div class="mix-row"><div class="mix-meta"><span data-i18n="mixChildrenLabel">Children</span><span id="childrenPct">20%</span></div><div class="bar"><i id="childrenBar" style="width:20%"></i></div></div>
+          </div>
+          <div class="panel">
+            <h3 data-i18n="qualityTitle">采购时关注什么？</h3>
+            <p class="panel-note" data-i18n="qualityNote">建议在正式报价前确认以下项目</p>
+            <ul class="quality-list">
+              <li data-i18n="quality1">等级标准：A / B 或混合等级</li>
+              <li data-i18n="quality2">包装方式：打包袋、纸箱或按客户指定</li>
+              <li data-i18n="quality3">尺码与性别比例：可按渠道需求沟通</li>
+              <li data-i18n="quality4">目的港、贸易条款和装运周期</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="quote-section" id="quote">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="eyebrow" data-i18n="quoteEyebrow">快速询盘</div><h2 data-i18n="quoteTitle">把需求变成<br />一段可发送的询盘。</h2></div>
+          <p data-i18n="quoteIntro">调整数量、平均单件重量和单价，右侧摘要会实时更新。价格留空时自动显示“询价”。</p>
+        </div>
+        <div class="quote-grid">
+          <div class="panel">
+            <h3 data-i18n="configTitle">配置采购需求</h3>
+            <p class="panel-note" data-i18n="configNote">仅用于估算与生成询盘，不替代最终商业报价。</p>
+            <div class="form-grid">
+              <div class="field full"><label for="quantity" data-i18n="quantityLabel">Number of bales</label><input id="quantity" type="range" min="40" max="528" step="1" value="264" /><div class="range-meta"><span>40 bales</span><strong id="quantityValue">264 bales</strong><span>528 bales</span></div></div>
+              <div class="field"><label for="unitPrice" data-i18n="priceLabel">Price (USD / bale)</label><input id="unitPrice" type="number" min="0" step="1" value="125" /></div>
+              <div class="field"><label for="packaging" data-i18n="packagingLabel">Packaging</label><select id="packaging"><option data-i18n="packBale">100kg/bale · Compressed bale</option><option data-i18n="packCustom">Customer specification</option></select></div>
+              <div class="field"><label for="port" data-i18n="portLabel">目的地 / 目的港</label><input id="port" value="Port-au-Prince, Haiti" /></div>
+              <div class="field"><label for="buyer" data-i18n="buyerLabel">客户称呼（可选）</label><input id="buyer" placeholder="Name / Company" /></div>
+              <div class="field full"><label for="message" data-i18n="messageLabel">补充要求（可选）</label><input id="message" placeholder="Grade, size mix, delivery timing..." /></div>
+            </div>
+          </div>
+          <aside class="quote-result" aria-live="polite">
+            <h3 data-i18n="summaryTitle">你的询盘摘要</h3>
+            <div class="result-line"><span data-i18n="summaryWeight">Total weight</span><strong id="resultWeight">26,400kg</strong></div>
+            <div class="result-line"><span data-i18n="summaryBales">Bales</span><strong id="resultBales">264 bales</strong></div>
+            <div class="result-line"><span data-i18n="summaryPieces">Container load</span><strong id="resultPieces">1 × 40ft</strong></div>
+            <div class="result-line"><span data-i18n="summaryValue">参考货值</span><strong id="resultValue">询价</strong></div>
+            <div class="quote-actions"><button class="btn btn-primary" id="copyBtn" data-i18n="copyBtn">复制询盘文本</button><a class="btn btn-secondary" href="#contact" data-i18n="contactBtn">联系供应商</a></div>
+            <p class="tiny" data-i18n="estimateNote">* 件数为按平均重量计算的估算值；实际数量取决于款式、面料和装包结果。</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-head"><div><div class="eyebrow" data-i18n="processEyebrow">合作流程</div><h2 data-i18n="processTitle">从规格确认到装运，<br />保持简单。</h2></div></div>
+        <div class="steps">
+          <article class="step"><h3 data-i18n="step1Title">确认配比</h3><p data-i18n="step1Text">确认类别、等级、尺码、包装和目标市场需求。</p></article>
+          <article class="step"><h3 data-i18n="step2Title">核算报价</h3><p data-i18n="step2Text">根据重量、包装、目的港和贸易条款提供报价。</p></article>
+          <article class="step"><h3 data-i18n="step3Title">准备货物</h3><p data-i18n="step3Text">按确认的装包方案准备 100kg 或多包批次。</p></article>
+          <article class="step"><h3 data-i18n="step4Title">安排发运</h3><p data-i18n="step4Text">确认付款与装运信息后，推进出口及物流安排。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" style="padding-top: 0;">
+      <div class="wrap">
+        <div class="contact">
+          <div><div class="eyebrow" data-i18n="contactEyebrow">开始沟通</div><h2 data-i18n="contactTitle">为你的海地渠道，定制一包 Summer Mix。</h2><p data-i18n="contactText">把你的目标数量、目的港和品类偏好发给我们，我们会据此确认可供规格与报价。</p></div>
+          <div class="contact-card">
+            <div class="contact-line"><span data-i18n="contactPerson">Contact</span><b id="contactName">Maggie Yu</b></div>
+            <div class="contact-line"><span>WhatsApp</span><b id="contactWhatsapp">+886 912 338 780</b></div>
+            <div class="contact-line"><span>Email</span><b id="contactEmail">greenrepublic@yahoo.com.tw</b></div>
+            <a class="btn btn-dark" id="whatsappLink" href="https://wa.me/886912338780" target="_blank" rel="noreferrer">WhatsApp →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding-top: 0;">
+      <div class="wrap">
+        <details class="edit-box" id="editInfo">
+          <summary data-i18n="editSummary">✎ 编辑产品资料（发布前请填写真实信息）</summary>
+          <div class="edit-content">
+            <p class="edit-hint" data-i18n="editHint">修改后会自动保存在当前浏览器，并同步到页面各处。配比总和建议保持 100%。</p>
+            <div class="form-grid">
+              <div class="field"><label for="editBrand" data-i18n="editBrandLabel">Brand / company</label><input id="editBrand" value="Green Republic" /></div>
+              <div class="field"><label for="editSku" data-i18n="editSkuLabel">Product code</label><input id="editSku" value="GR-SM-100" /></div>
+              <div class="field"><label for="editContact" data-i18n="editContactLabel">Contact person</label><input id="editContact" value="Maggie Yu" /></div>
+              <div class="field"><label for="editWhatsapp">WhatsApp</label><input id="editWhatsapp" value="+886 912 338 780" /></div>
+              <div class="field"><label for="editEmail">Email</label><input id="editEmail" value="greenrepublic@yahoo.com.tw" /></div>
+              <div class="field"><label for="editOrigin" data-i18n="editOriginLabel">货源地 / 装运地</label><input id="editOrigin" placeholder="Origin / Loading port" /></div>
+              <div class="field"><label for="mixLadies">Ladies %</label><input id="mixLadies" type="number" min="0" max="100" value="50" /></div>
+              <div class="field"><label for="mixMens">Men's %</label><input id="mixMens" type="number" min="0" max="100" value="30" /></div>
+              <div class="field"><label for="mixChildren">Children %</label><input id="mixChildren" type="number" min="0" max="100" value="20" /></div>
+            </div>
+          </div>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner"><span>© <span id="footerBrand">Green Republic</span> · Summer Mix 100kg</span><span data-i18n="footerNote">Product information supplied by Green Republic</span></div>
+  </footer>
+  <div class="toast" id="toast" role="status"></div>
+
+  <script>
+    const $ = (id) => document.getElementById(id);
+    const stateKey = "green-republic-summer-mix-haiti-v2";
+    const defaults = {
+      brand: "Green Republic", sku: "GR-SM-100", contact: "Maggie Yu", whatsapp: "+886 912 338 780", email: "greenrepublic@yahoo.com.tw", origin: "",
+      ladies: 50, mens: 30, children: 20
+    };
+    let state = { ...defaults };
+    try { state = { ...state, ...JSON.parse(localStorage.getItem(stateKey) || "{}") }; } catch (e) {}
+
+    const copy = {
+      zh: {
+        navProduct:"产品", navMix:"配比", navQuote:"询盘", navContact:"联系", eyebrow:"夏季精选 · 批发装",
+        heroCopy:"面向海地市场的夏季二手衣混装方案。轻便、易分销，适合批发商、零售商和社区市场快速补货。",
+        ctaQuote:"配置我的询盘 →", ctaPrint:"打印 / 保存 PDF", draftNoteTitle:"可编辑样板", draftNote:"价格、真实配比、包装和联系方式请在下方填写后发布。",
+        statPack:"压缩打包包", statPieces:"40尺柜装量", statCategories:"每包价格", statMarket:"最低起订量",
+        sectionEyebrow:"产品定位", productTitle:"为热带夏季准备的<br />灵活混装。", productIntro:"女装、男装和童装二手衣，以 100kg 压缩打包包形式供应，面向海地市场。",
+        feature1Title:"适合夏季销售", feature1Text:"清晰的夏季混装方案，适合温暖气候下的批发和零售渠道。",
+        feature2Title:"适合批发分销", feature2Text:"每包 100kg、每个 40 尺柜 264 包，单价明确为 125 美元 / 包。",
+        feature3Title:"面向海地渠道", feature3Text:"为进口商、批发商、零售商和社区市场提供清晰的整柜采购方案。",
+        storyEyebrow:"产品视觉", storyTitle:"看见货包、<br />品类和销售路径。", storyIntro:"Green Republic 提供的产品视觉参考。当前商业规格仍为每包 100kg 压缩打包包、每个 40 尺柜 264 包。", story1Title:"压缩打包包参考", story1Text:"视觉参考；当前商业供应规格：100kg / 包", story2Title:"出口包装", story2Text:"压缩打包包展示", story3Title:"品类混装", story3Text:"女装 · 男装 · 童装", story4Title:"质量控制", story4Text:"检验与装包流程", story5Title:"市场适配", story5Text:"温暖气候销售场景", story6Title:"整柜出口准备", story6Text:"每个 40 尺柜 264 包 · 台湾出口视觉",
+        mixEyebrow:"已确认配置", mixTitle:"一包之内，<br />看得懂的商品结构。", mixIntro:"当前比例为女装 50%、男装 30%、童装 20%。如装包单变化，可在“编辑产品资料”中更新。",
+        assortmentTitle:"Summer Mix 品类比例", assortmentNote:"已确认配置 · 100kg 压缩打包包", mixLadiesLabel:"女装", mixMensLabel:"男装", mixChildrenLabel:"童装", qualityTitle:"采购时关注什么？", qualityNote:"建议在正式报价前确认以下项目",
+        quality1:"等级标准：A / B 或混合等级", quality2:"包装方式：打包袋、纸箱或按客户指定", quality3:"尺码与性别比例：可按渠道需求沟通", quality4:"目的港、贸易条款和装运周期",
+        quoteEyebrow:"快速询盘", quoteTitle:"把需求变成<br />一段可发送的询盘。", quoteIntro:"调整包数和单价，右侧摘要会实时更新。默认值为 40 尺柜起订量：264 包。",
+        configTitle:"配置采购需求", configNote:"仅用于估算与生成询盘，不替代最终商业报价。", quantityLabel:"采购包数", priceLabel:"单价（USD / 包）", packagingLabel:"包装方式", portLabel:"目的地 / 目的港", buyerLabel:"客户称呼（可选）", messageLabel:"补充要求（可选）",
+        packBale:"100kg / 包 · 压缩打包包", packCustom:"按客户要求", summaryTitle:"你的询盘摘要", summaryWeight:"总重量", summaryBales:"包数", summaryPieces:"柜量", summaryValue:"参考货值", copyBtn:"复制询盘文本", contactBtn:"联系供应商", estimateNote:"40 尺柜装量为 264 包；低于 264 包时，页面仅作数量估算，最终以双方确认的 MOQ 为准。",
+        processEyebrow:"合作流程", processTitle:"从规格确认到装运，<br />保持简单。", step1Title:"确认配比", step1Text:"确认类别、等级、尺码、包装和目标市场需求。", step2Title:"核算报价", step2Text:"根据重量、包装、目的港和贸易条款提供报价。", step3Title:"准备货物", step3Text:"按确认的装包方案准备 100kg 或多包批次。", step4Title:"安排发运", step4Text:"确认付款与装运信息后，推进出口及物流安排。",
+        contactEyebrow:"开始沟通", contactTitle:"为你的海地渠道，定制一包 Summer Mix。", contactText:"把你的目标数量、目的港和品类偏好发给我们，我们会据此确认可供规格与报价。", contactPerson:"联系人", editSummary:"✎ 编辑产品资料（发布前请填写真实信息）", editHint:"修改后会自动保存在当前浏览器，并同步到页面各处。配比总和建议保持 100%。", editBrandLabel:"品牌 / 公司名", editSkuLabel:"产品编号", editContactLabel:"联系人", editOriginLabel:"货源地 / 装运地", footerNote:"示例页面 · 发布前请核对所有规格与商业信息"
+      },
+      en: {
+        navProduct:"Product", navMix:"Mix", navQuote:"Quote", navContact:"Contact", eyebrow:"Seasonal selection · Wholesale bale",
+        heroCopy:"A summer second-hand clothing mix prepared for the Haiti market — light, resellable and easy for wholesalers, retailers and community markets to replenish.", ctaQuote:"Build my inquiry →", ctaPrint:"Print / Save PDF", draftNoteTitle:"Product information", draftNote:"Confirmed company, packing, mix, price and contact details are shown below.", statPack:"Compressed bale", statPieces:"Bales / 40ft container", statCategories:"Price / bale", statMarket:"Minimum order",
+        sectionEyebrow:"Positioning", productTitle:"A flexible mix<br />for tropical summer.", productIntro:"Ladies, men's and children's second-hand clothing packed as 100kg compressed bales for the Haiti market.", feature1Title:"Summer-friendly", feature1Text:"A practical summer assortment for warm-climate resale, with the category mix clearly stated before ordering.", feature2Title:"Wholesale-ready", feature2Text:"100kg per compressed bale, 264 bales per 40ft container and a clear USD 125 price per bale.", feature3Title:"Built for Haiti distribution", feature3Text:"A simple container-level offer for importers, wholesalers, retailers and community markets.",
+        storyEyebrow:"Product visual story", storyTitle:"See the bale,<br />the mix and the route to market.", storyIntro:"Reference visuals supplied by Green Republic. The current commercial specification remains 100kg per compressed bale, 264 bales per 40ft container.", story1Title:"Compressed bale reference", story1Text:"Reference visual; current commercial offer: 100kg/bale", story2Title:"Export packaging", story2Text:"Compressed bale presentation", story3Title:"Category mix", story3Text:"Ladies · Men's · Children", story4Title:"Quality control", story4Text:"Inspection and packing workflow", story5Title:"Market fit", story5Text:"Warm-climate resale visual", story6Title:"Bulk export readiness", story6Text:"264 bales per 40ft container · Taiwan export visual",
+        mixEyebrow:"Confirmed configuration", mixTitle:"A product structure<br />you can read at a glance.", mixIntro:"The current assortment is 50% Ladies, 30% Men's and 20% Children. Open “Edit product info” if the packing list changes.", assortmentTitle:"Summer Mix category ratio", assortmentNote:"Confirmed assortment · 100kg compressed bale", mixLadiesLabel:"Ladies", mixMensLabel:"Men's", mixChildrenLabel:"Children", qualityTitle:"Order information", qualityNote:"Key details for a commercial conversation", quality1:"Packing: 100kg/bale compressed bales", quality2:"Container load: 264 bales per 40ft container", quality3:"Price: USD 125 per bale", quality4:"MOQ: 1 × 40ft container",
+        quoteEyebrow:"Quick inquiry", quoteTitle:"Turn your needs<br />into a ready-to-send inquiry.", quoteIntro:"Adjust the number of bales and price. The summary updates in real time. The default quantity is the 40ft MOQ: 264 bales.", configTitle:"Configure your order", configNote:"For estimation and inquiry drafting only — not a final commercial quotation.", quantityLabel:"Number of bales", priceLabel:"Price (USD / bale)", packagingLabel:"Packaging", portLabel:"Destination / port", buyerLabel:"Buyer name (optional)", messageLabel:"Additional request (optional)", packBale:"100kg/bale · Compressed bale", packCustom:"Customer specification", summaryTitle:"Your inquiry summary", summaryWeight:"Total weight", summaryBales:"Bales", summaryPieces:"Container load", summaryValue:"Reference value", copyBtn:"Copy inquiry text", contactBtn:"Contact supplier", estimateNote:"A 40ft container holds 264 bales. Below 264 bales is shown for quantity planning only; final MOQ is subject to confirmation.",
+        processEyebrow:"How it works", processTitle:"From specification<br />to shipment, kept simple.", step1Title:"Confirm the mix", step1Text:"Confirm categories, grade, sizes, packaging and market needs.", step2Title:"Receive quotation", step2Text:"Price according to weight, packaging, destination and trade terms.", step3Title:"Prepare goods", step3Text:"Prepare one 100kg bale or a multi-bale batch to the agreed spec.", step4Title:"Arrange shipment", step4Text:"Move forward with export and logistics after payment and shipping details are confirmed.", contactEyebrow:"Start a conversation", contactTitle:"Build a Summer Mix for your Haiti channel.", contactText:"Send your target quantity, destination port and category preferences. We will confirm available specs and pricing.", contactPerson:"Contact", editSummary:"✎ Edit product info (complete before publishing)", editHint:"Changes are saved in this browser and synchronized across the page. Keep the mix total at 100%.", editBrandLabel:"Brand / company", editSkuLabel:"Product code", editContactLabel:"Contact person", editOriginLabel:"Origin / loading port", footerNote:"Sample page · Verify all specifications and commercial information before publishing"
+      },
+      ht: {
+        navProduct:"Pwodui", navMix:"Konpozisyon", navQuote:"Demann", navContact:"Kontak", eyebrow:"Seleksyon sezon an · Bal an gwo",
+        heroCopy:"Yon melanj rad dezyèm men pou mache Ayiti a — lejè, fasil pou revann, epi pratik pou grossis, détaillants ak mache lokal yo.", ctaQuote:"Prepare demann mwen an →", ctaPrint:"Enprime / Sove PDF", draftNoteTitle:"Enfòmasyon sou pwodui a", draftNote:"Enfòmasyon konfime sou konpayi an, anbalaj la, melanj la, pri a ak kontak la parèt anba a.", statPack:"Bal konprese", statPieces:"Bal / kontenè 40 pye", statCategories:"Pri / bal", statMarket:"Kòmand minimòm",
+        sectionEyebrow:"Pozisyonman", productTitle:"Yon melanj fleksib<br />pou ete twopikal la.", productIntro:"Rad dezyèm men pou fanm, gason ak timoun, ki chaje nan bal konprese 100 kg pou mache Ayiti a.", feature1Title:"Bon pou sezon cho", feature1Text:"Yon seleksyon pratik pou revann nan klima cho, ak kategori yo klè depi anvan kòmand lan.", feature2Title:"Prepare pou distribisyon an gwo", feature2Text:"100 kg pou chak bal konprese, 264 bal pou yon kontenè 40 pye, ak yon pri klè 125 USD pou chak bal.", feature3Title:"Fèt pou distribisyon ann Ayiti", feature3Text:"Yon òf senp pou enpòtatè, grossis, détaillants ak mache kominotè yo.",
+        storyEyebrow:"Istwa vizyèl pwodui a", storyTitle:"Gade bal la,<br />melanj lan ak chemen li rive sou mache a.", storyIntro:"Green Republic bay imaj vizyèl sa yo kòm referans. Spesifikasyon komèsyal aktyèl la rete 100 kg pou chak bal konprese, 264 bal pou yon kontenè 40 pye.", story1Title:"Referans bal konprese", story1Text:"Imaj referans; òf komèsyal aktyèl la: 100 kg/bal", story2Title:"Anbalaj pou ekspòtasyon", story2Text:"Prezantasyon bal konprese", story3Title:"Melanj kategori", story3Text:"Ladies · Mens · Timoun", story4Title:"Kontwòl kalite", story4Text:"Pwosesis enspeksyon ak anbalaj", story5Title:"Pou mache a", story5Text:"Imaj revann nan klima cho", story6Title:"Pare pou gwo ekspòtasyon", story6Text:"264 bal pou yon kontenè 40 pye · Imaj ekspòtasyon Taiwan",
+        mixEyebrow:"Konpozisyon konfime", mixTitle:"Yon estrikti pwodui<br />ou ka konprann fasil.", mixIntro:"Melanj aktyèl la se 50% Ladies, 30% Mens ak 20% Children. Louvri “Modifye enfòmasyon pwodui a” si lis anbalaj la chanje.", assortmentTitle:"Konpozisyon Summer Mix", assortmentNote:"Konpozisyon konfime · bal konprese 100 kg", mixLadiesLabel:"Ladies", mixMensLabel:"Mens", mixChildrenLabel:"Timoun", qualityTitle:"Enfòmasyon sou kòmand lan", qualityNote:"Pwen kle pou yon konvèsasyon komèsyal", quality1:"Anbalaj: 100 kg pou chak bal konprese", quality2:"Chajman: 264 bal pou yon kontenè 40 pye", quality3:"Pri: 125 USD pou chak bal", quality4:"MOQ: 1 × kontenè 40 pye",
+        quoteEyebrow:"Demann rapid", quoteTitle:"Fè bezwen ou yo tounen<br />yon demann ou ka voye touswit.", quoteIntro:"Ajiste kantite bal yo ak pri a. Rezime a ap chanje an tan reyèl. Kantite default la se MOQ kontenè 40 pye a: 264 bal.", configTitle:"Prepare kòmand ou", configNote:"Pou estimasyon ak prepare demann sèlman — se pa yon òf komèsyal final.", quantityLabel:"Kantite bal", priceLabel:"Pri (USD / bal)", packagingLabel:"Anbalaj", portLabel:"Destinasyon / pò", buyerLabel:"Non achtè a (opsyonèl)", messageLabel:"Lòt demann (opsyonèl)", packBale:"100 kg/bal · Bal konprese", packCustom:"Dapre espesifikasyon kliyan an", summaryTitle:"Rezime demann ou", summaryWeight:"Pwa total", summaryBales:"Bal", summaryPieces:"Chajman kontenè", summaryValue:"Valè referans", copyBtn:"Kopye tèks demann lan", contactBtn:"Kontakte founisè a", estimateNote:"Yon kontenè 40 pye pran 264 bal. Pi ba pase 264 bal la se sèlman pou planifikasyon; MOQ final la dwe konfime.",
+        processEyebrow:"Kijan sa mache", processTitle:"Soti nan spesifikasyon<br />rive nan ekspedisyon, san konplikasyon.", step1Title:"Konfime melanj lan", step1Text:"Konfime kategori, kalite, gwosè, anbalaj ak bezwen mache a.", step2Title:"Resevwa pri a", step2Text:"Pri a baze sou pwa, anbalaj, destinasyon ak kondisyon komèsyal yo.", step3Title:"Prepare machandiz la", step3Text:"Prepare yon bal 100 kg oswa plizyè bal dapre espesifikasyon yo.", step4Title:"Òganize ekspedisyon an", step4Text:"Kòmanse ekspòtasyon ak lojistik apre peman ak detay ekspedisyon yo konfime.", contactEyebrow:"Kòmanse pale", contactTitle:"Prepare yon Summer Mix pou kanal ou ann Ayiti.", contactText:"Voye kantite ou bezwen, pò destinasyon an ak preferans kategori yo. N ap konfime espesifikasyon ak pri ki disponib.", contactPerson:"Kontak", editSummary:"✎ Modifye enfòmasyon pwodui a (ranpli anvan ou pibliye)", editHint:"Chanjman yo ap sove nan navigatè sa a epi yo ap mete ajou paj la. Kenbe total melanj lan a 100%.", editBrandLabel:"Mak / konpayi", editSkuLabel:"Kòd pwodui a", editContactLabel:"Moun pou kontakte", editOriginLabel:"Orijin / pò chajman", footerNote:"Paj enfòmasyon Green Republic · Verifye tout spesifikasyon ak enfòmasyon komèsyal yo anvan piblikasyon"
+      }
+    };
+
+    function save() { localStorage.setItem(stateKey, JSON.stringify(state)); }
+    function toast(message) { const el = $("toast"); el.textContent = message; el.classList.add("show"); clearTimeout(window.__toastTimer); window.__toastTimer = setTimeout(() => el.classList.remove("show"), 2600); }
+    function clamp(n) { return Math.max(0, Math.min(100, Number(n) || 0)); }
+    function setText(el, value) { if (el) el.innerHTML = value; }
+
+    function applyLanguage(lang) {
+      const dict = copy[lang] || copy.zh;
+      document.documentElement.lang = lang === "zh" ? "zh-CN" : lang;
+      document.querySelectorAll("[data-i18n]").forEach(el => { if (dict[el.dataset.i18n]) setText(el, dict[el.dataset.i18n]); });
+      document.querySelectorAll("[data-lang]").forEach(btn => btn.classList.toggle("active", btn.dataset.lang === lang));
+      document.body.dataset.lang = lang;
+      window.__language = lang;
+      updateResults();
+    }
+
+    function updateMix() {
+      const fields = { ladies: $("mixLadies"), mens: $("mixMens"), children: $("mixChildren") };
+      Object.entries(fields).forEach(([key, field]) => { state[key] = clamp(field.value); $(key + "Pct").textContent = state[key] + "%"; $(key + "Bar").style.width = state[key] + "%"; });
+      save();
+    }
+
+    function updateIdentity() {
+      $("brandName").textContent = state.brand || defaults.brand;
+      $("footerBrand").textContent = state.brand || defaults.brand;
+      $("contactName").textContent = state.contact || defaults.contact;
+      $("contactWhatsapp").textContent = state.whatsapp || defaults.whatsapp;
+      $("contactEmail").textContent = state.email || defaults.email;
+      $("whatsappLink").href = `https://wa.me/${(state.whatsapp || defaults.whatsapp).replace(/\D/g, "")}`;
+      document.title = `${state.brand || defaults.brand} · Summer Mix 100kg | Haiti Market`;
+    }
+
+    function updateResults() {
+      const bales = Number($("quantity").value) || 264;
+      const totalKg = bales * 100;
+      const price = Number($("unitPrice").value) || 0;
+      const containers = bales / 264;
+      const containerText = bales % 264 === 0 ? `${containers} × 40ft` : `${containers.toFixed(2)} × 40ft`;
+      const lang = window.__language || "en";
+      const labels = { zh: { bale: `${bales} 包`, load: containerText, ask: "询价", currency: "$" }, en: { bale: `${bales} bales`, load: containerText, ask: "Price on request", currency: "$" }, ht: { bale: `${bales} bal`, load: containerText, ask: "Pri sou demann", currency: "$" } }[lang] || { bale: `${bales} bales`, load: containerText, ask: "Price on request", currency: "$" };
+      $("quantityValue").textContent = `${bales} ${lang === "ht" ? "bal" : lang === "zh" ? "包" : "bales"}`;
+      $("resultWeight").textContent = `${totalKg.toLocaleString()}kg`;
+      $("resultBales").textContent = labels.bale;
+      $("resultPieces").textContent = labels.load;
+      $("resultValue").textContent = price > 0 ? `${labels.currency}${(bales * price).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}` : labels.ask;
+    }
+
+    function inquiryText() {
+      const lang = window.__language || "en";
+      const bales = Number($("quantity").value) || 264;
+      const totalKg = bales * 100;
+      const price = Number($("unitPrice").value) || 0;
+      const containerText = bales % 264 === 0 ? `${bales / 264} × 40ft` : `${(bales / 264).toFixed(2)} × 40ft`;
+      const packaging = $("packaging").selectedOptions[0].textContent;
+      const port = $("port").value || "To be confirmed";
+      const buyer = $("buyer").value || "";
+      const extra = $("message").value || "None";
+      if (lang === "ht") return `Bonjou, mwen se ${buyer || "yon achtè"}. Mwen enterese nan Summer Mix rad dezyèm men ${state.brand || defaults.brand}.\nKantite bal: ${bales}\nPwa total: ${totalKg} kg\nChajman: ${containerText}\nAnbalaj: ${packaging}\nDestinasyon: ${port}\nPri referans: ${price > 0 ? "$" + price.toFixed(2) + "/bal" : "Pri sou demann"}\nLòt demann: ${extra}\nTanpri voye kalite ki disponib, foto, lis anbalaj ak pri ekspedisyon an.`;
+      if (lang === "zh") return `你好，我想咨询 ${state.brand || defaults.brand} Summer Mix 夏季二手衣。\n采购包数：${bales} 包\n总重量：${totalKg} kg\n柜量：${containerText}\n包装方式：${packaging}\n目的地：${port}\n参考单价：${price > 0 ? "$" + price.toFixed(2) + "/包" : "询价"}\n补充要求：${extra}\n请提供可供等级、实拍图、装包清单和海运报价。`;
+      return `Hello, I am ${buyer || "a buyer"}. I am interested in ${state.brand || defaults.brand} Summer Mix second-hand clothing.\nNumber of bales: ${bales}\nTotal weight: ${totalKg} kg\nContainer load: ${containerText}\nPackaging: ${packaging}\nDestination: ${port}\nReference price: ${price > 0 ? "$" + price.toFixed(2) + "/bale" : "Price on request"}\nAdditional request: ${extra}\nPlease share available grades, photos, packing list and shipping quotation.`;
+    }
+
+    ["quantity", "unitPrice", "packaging", "port", "buyer", "message"].forEach(id => $(id).addEventListener("input", updateResults));
+    ["quantity", "unitPrice", "packaging", "port", "buyer", "message"].forEach(id => $(id).addEventListener("change", updateResults));
+    $("copyBtn").addEventListener("click", async () => { const text = inquiryText(); try { await navigator.clipboard.writeText(text); toast((window.__language === "ht") ? "Demann lan kopye" : (window.__language === "zh") ? "询盘文本已复制" : "Inquiry copied"); } catch (e) { window.prompt("Copy inquiry text:", text); } });
+    $("printBtn").addEventListener("click", () => window.print());
+    document.querySelectorAll("[data-lang]").forEach(btn => btn.addEventListener("click", () => applyLanguage(btn.dataset.lang)));
+
+    const identityFields = { editBrand: "brand", editSku: "sku", editContact: "contact", editWhatsapp: "whatsapp", editEmail: "email", editOrigin: "origin", mixLadies: "ladies", mixMens: "mens", mixChildren: "children" };
+    Object.entries(identityFields).forEach(([id, key]) => { const el = $(id); if (state[key] !== undefined && state[key] !== "") el.value = state[key]; el.addEventListener("input", () => { state[key] = ["ladies","mens","children"].includes(key) ? clamp(el.value) : el.value; updateIdentity(); updateMix(); }); });
+
+    updateIdentity(); updateMix(); applyLanguage("en"); updateResults();
+  </script>
+</body>
+</html>
