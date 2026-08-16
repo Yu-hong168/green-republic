@@ -196,6 +196,12 @@
     .logo-fields { display: grid; grid-column: 1 / -1; grid-template-columns: 1fr 1fr; gap: 15px; padding: 15px; border: 1px solid #d9eee2; border-radius: 15px; background: #f4fbf6; }
     .logo-fields[hidden] { display: none; }
     .file-note { color: var(--muted); font-size: 11px; }
+    .file-link { color: var(--teal); font-size: 11px; font-weight: 850; text-decoration: none; }
+    .file-link:hover { text-decoration: underline; }
+    .file-link[hidden] { display: none; }
+    #logoUploadStatus[data-state="success"] { color: var(--teal); }
+    #logoUploadStatus[data-state="error"] { color: #b84949; }
+    #logoUploadStatus[data-state="uploading"] { color: #8b6d18; }
     label { color: var(--ink-soft); font-size: 12px; font-weight: 850; }
     input, select { width: 100%; min-height: 43px; padding: 0 12px; border: 1px solid var(--line); border-radius: 11px; outline: 0; color: var(--ink); background: white; }
     input:focus, select:focus { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(8,127,115,.13); }
@@ -424,8 +430,8 @@
               <div class="field full"><label for="logoCustomization" data-i18n="logoCustomizationLabel">Logo customization</label><select id="logoCustomization"><option value="no" data-i18n="logoNo">No</option><option value="yes" data-i18n="logoYes">Yes</option></select></div>
               <div class="logo-fields" id="logoFields" hidden>
                 <div class="field"><label for="logoName" data-i18n="logoNameLabel">Logo name</label><input id="logoName" data-placeholder-i18n="logoNamePlaceholder" placeholder="Your logo name" /></div>
-                <div class="field"><label for="logoImage" data-i18n="logoImageLabel">Upload logo image</label><input id="logoImage" type="file" accept="image/*" /><span class="file-note" id="logoFileName" data-i18n="logoNoFile">No image selected</span></div>
-                <p class="file-note field full" data-i18n="logoImageNote">Please attach the selected image when sending the inquiry.</p>
+                <div class="field"><label for="logoImage" data-i18n="logoImageLabel">Upload logo image</label><input id="logoImage" type="file" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp" /><span class="file-note" id="logoFileName">No image selected</span><span class="file-note" id="logoUploadStatus" data-i18n="logoNoFile">No image selected</span><a id="logoImageLink" class="file-link" href="#" target="_blank" rel="noopener" hidden data-i18n="logoOpenLink">Open uploaded image</a></div>
+                <p class="file-note field full" data-i18n="logoImageNote">The image will be uploaded securely and added as a link to the inquiry.</p>
               </div>
               <div class="field full"><label for="message" data-i18n="messageLabel">Qué quieres confirmar</label><input id="message" placeholder="Grado, categorías, fotos, flete, tiempo de entrega..." /></div>
             </div>
@@ -501,6 +507,9 @@
     const $ = (id) => document.getElementById(id);
     const stateKey = "green-republic-summer-mix-haiti-v3";
     const defaults = { brand: "Green Republic", sku: "GR-SM-100", contact: "Maggie Yu", whatsapp: "+886 912 338 780", email: "greenrepublic@yahoo.com.tw", origin: "", ladies: 50, mens: 30, children: 20 };
+    const cloudinaryConfig = { cloudName: "nek9xaps", uploadPreset: "green-republic-logo", uploadEndpoint: "https://api.cloudinary.com/v1_1/nek9xaps/image/upload" };
+    const logoLimits = { maxBytes: 5 * 1024 * 1024, types: ["image/jpeg", "image/png", "image/webp"] };
+    let logoUploadState = { statusKey: "logoNoFile", status: "idle", url: "" };
     let state = { ...defaults };
     try { state = { ...state, ...JSON.parse(localStorage.getItem(stateKey) || "{}") }; } catch (e) {}
 
@@ -544,7 +553,13 @@
       ht: { logoCustomizationLabel: "Èske w bezwen logo pèsonalize?", logoNo: "Non", logoYes: "Wi", logoNameLabel: "Non logo a", logoNamePlaceholder: "Non logo ou", logoImageLabel: "Mete imaj logo a", logoNoFile: "Pa gen imaj chwazi", logoImageNote: "Tanpri tache imaj ou chwazi a lè w ap voye demann lan." },
       zh: { logoCustomizationLabel: "是否需要 Logo 定制？", logoNo: "否", logoYes: "是", logoNameLabel: "Logo 名称", logoNamePlaceholder: "请输入 Logo 名称", logoImageLabel: "上传 Logo 图片", logoNoFile: "尚未选择图片", logoImageNote: "发送询价时，请同时附上已选择的 Logo 图片。" }
     };
-    function currentCopy(lang = window.__language || "es") { return { ...copy.es, ...(logoCopy.es || {}), ...(copy[lang] || {}), ...(logoCopy[lang] || {}) }; }
+    const uploadCopy = {
+      es: { logoImageNote: "La imagen se subirá de forma segura y se añadirá como enlace a la consulta.", logoOpenLink: "Abrir imagen subida", logoUploading: "Subiendo imagen…", logoUploadSuccess: "Imagen subida correctamente", logoUploadError: "No se pudo subir la imagen. Inténtalo de nuevo.", logoFileTypeError: "Solo se aceptan JPG, PNG o WEBP.", logoFileSizeError: "La imagen debe pesar menos de 5 MB.", logoUploadPending: "La imagen todavía se está subiendo", logoUploadRequired: "Selecciona una imagen de logo y espera a que termine la carga." },
+      en: { logoImageNote: "The image will be uploaded securely and added as a link to the inquiry.", logoOpenLink: "Open uploaded image", logoUploading: "Uploading image…", logoUploadSuccess: "Image uploaded successfully", logoUploadError: "The image could not be uploaded. Please try again.", logoFileTypeError: "Only JPG, PNG or WEBP images are accepted.", logoFileSizeError: "The image must be smaller than 5 MB.", logoUploadPending: "The image is still uploading", logoUploadRequired: "Select a logo image and wait for the upload to finish." },
+      ht: { logoImageNote: "N ap telechaje imaj la an sekirite epi ajoute yon lyen nan demann lan.", logoOpenLink: "Louvri imaj la", logoUploading: "N ap telechaje imaj la…", logoUploadSuccess: "Imaj la telechaje avèk siksè", logoUploadError: "Nou pa t ka telechaje imaj la. Eseye ankò.", logoFileTypeError: "Se imaj JPG, PNG oswa WEBP sèlman nou aksepte.", logoFileSizeError: "Imaj la dwe pi piti pase 5 MB.", logoUploadPending: "Imaj la toujou ap telechaje", logoUploadRequired: "Chwazi yon imaj logo epi tann telechajman an fini." },
+      zh: { logoImageNote: "图片会安全上传，并以链接形式加入询价内容。", logoOpenLink: "打开已上传图片", logoUploading: "正在上传图片…", logoUploadSuccess: "图片上传成功", logoUploadError: "图片上传失败，请重试。", logoFileTypeError: "只接受 JPG、PNG 或 WEBP 图片。", logoFileSizeError: "图片大小必须小于 5MB。", logoUploadPending: "图片仍在上传中", logoUploadRequired: "请选择 Logo 图片，并等待上传完成。" }
+    };
+    function currentCopy(lang = window.__language || "es") { return { ...copy.es, ...(logoCopy.es || {}), ...(uploadCopy.es || {}), ...(copy[lang] || {}), ...(logoCopy[lang] || {}), ...(uploadCopy[lang] || {}) }; }
 
     function applyLanguage(lang) {
       const dict = currentCopy(lang);
@@ -595,7 +610,43 @@
       const enabled = $("logoCustomization").value === "yes";
       $("logoFields").hidden = !enabled;
       const file = $("logoImage").files?.[0];
-      $("logoFileName").textContent = file ? file.name : currentCopy().logoNoFile;
+      const dict = currentCopy();
+      $("logoFileName").textContent = file ? file.name : dict.logoNoFile;
+      $("logoUploadStatus").textContent = dict[logoUploadState.statusKey] || dict.logoNoFile;
+      $("logoUploadStatus").dataset.state = logoUploadState.status;
+      $("logoImageLink").hidden = !logoUploadState.url;
+      $("logoImageLink").href = logoUploadState.url || "#";
+      $("logoImageLink").textContent = dict.logoOpenLink;
+    }
+
+    async function uploadLogoImage() {
+      const file = $("logoImage").files?.[0];
+      logoUploadState = { statusKey: "logoNoFile", status: "idle", url: "" };
+      if (!file) { updateLogoFields(); return; }
+      logoUploadState = { statusKey: "logoUploading", status: "uploading", url: "" };
+      updateLogoFields();
+      if (!logoLimits.types.includes(file.type)) {
+        logoUploadState = { statusKey: "logoFileTypeError", status: "error", url: "" };
+        updateLogoFields();
+        return;
+      }
+      if (file.size > logoLimits.maxBytes) {
+        logoUploadState = { statusKey: "logoFileSizeError", status: "error", url: "" };
+        updateLogoFields();
+        return;
+      }
+      const body = new FormData();
+      body.append("file", file);
+      body.append("upload_preset", cloudinaryConfig.uploadPreset);
+      try {
+        const response = await fetch(cloudinaryConfig.uploadEndpoint, { method: "POST", body });
+        const result = await response.json();
+        if (!response.ok || !result.secure_url) throw new Error(result.error?.message || "Upload failed");
+        logoUploadState = { statusKey: "logoUploadSuccess", status: "success", url: result.secure_url };
+      } catch (error) {
+        logoUploadState = { statusKey: "logoUploadError", status: "error", url: "" };
+      }
+      updateLogoFields();
     }
 
     function inquiryText() {
@@ -610,7 +661,7 @@
       const extra = $("message").value || "Please share current photos, grade, packing list and shipping terms.";
       const logoEnabled = $("logoCustomization").value === "yes";
       const logoName = $("logoName").value.trim() || currentCopy(lang).logoNamePlaceholder;
-      const logoFile = $("logoImage").files?.[0]?.name || currentCopy(lang).logoNoFile;
+      const logoFile = logoUploadState.url || (logoUploadState.statusKey === "logoUploading" ? currentCopy(lang).logoUploadPending : currentCopy(lang).logoNoFile);
       const logoInfo = {
         es: logoEnabled ? `\nPersonalización de logo: Sí\nNombre del logo: ${logoName}\nImagen del logo: ${logoFile}` : "\nPersonalización de logo: No",
         en: logoEnabled ? `\nLogo customization: Yes\nLogo name: ${logoName}\nLogo image: ${logoFile}` : "\nLogo customization: No",
@@ -625,8 +676,12 @@
 
     ["quantity", "unitPrice", "packaging", "port", "buyer", "message"].forEach(id => { $(id).addEventListener("input", updateResults); $(id).addEventListener("change", updateResults); });
     $("logoCustomization").addEventListener("change", updateLogoFields);
-    $("logoImage").addEventListener("change", updateLogoFields);
-    $("copyBtn").addEventListener("click", async () => { const text = inquiryText(); try { await navigator.clipboard.writeText(text); toast((window.__language === "zh") ? "询价内容已复制" : (window.__language === "ht") ? "Demann lan kopye" : (window.__language === "en") ? "Inquiry copied" : "Consulta copiada"); } catch (e) { window.prompt("Copy inquiry:", text); } });
+    $("logoImage").addEventListener("change", uploadLogoImage);
+    $("copyBtn").addEventListener("click", async () => {
+      if ($("logoCustomization").value === "yes" && !logoUploadState.url) { toast(currentCopy().logoUploadRequired); return; }
+      const text = inquiryText();
+      try { await navigator.clipboard.writeText(text); toast((window.__language === "zh") ? "询价内容已复制" : (window.__language === "ht") ? "Demann lan kopye" : (window.__language === "en") ? "Inquiry copied" : "Consulta copiada"); } catch (e) { window.prompt("Copy inquiry:", text); }
+    });
     $("printBtn").addEventListener("click", () => window.print());
     document.querySelectorAll("[data-lang]").forEach(btn => btn.addEventListener("click", () => { window.__language = btn.dataset.lang; applyLanguage(btn.dataset.lang); }));
 
